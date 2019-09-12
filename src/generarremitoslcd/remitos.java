@@ -87,6 +87,8 @@ public class remitos extends javax.swing.JFrame {
         modeloIng = new javax.swing.JTextField();
         serieIng = new javax.swing.JTextField();
         fallaIng = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        obs = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         importeIng = new javax.swing.JTextField();
@@ -207,6 +209,8 @@ public class remitos extends javax.swing.JFrame {
 
         jLabel9.setText("FALLA:");
 
+        jLabel12.setText("OBSERVACIONES:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -217,9 +221,11 @@ public class remitos extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(obs, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(aparatoIng, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                         .addComponent(modeloIng)
@@ -246,6 +252,10 @@ public class remitos extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(fallaIng, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -350,7 +360,7 @@ public class remitos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -359,7 +369,7 @@ public class remitos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -372,18 +382,12 @@ public class remitos extends javax.swing.JFrame {
         return formatoFecha.format (fecha);
     }   
     
-    
     public static String fechaActual2(){
         Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMYYYY");
         return formatoFecha.format (fecha);
     }   
-    
-    
-    
-    
-    
-    
+     
     private void fechaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaTextActionPerformed
@@ -408,6 +412,7 @@ public class remitos extends javax.swing.JFrame {
             String modelo = modeloIng.getText();
             String serie = serieIng.getText();
             String falla = fallaIng.getText();
+            String observaciones = obs.getText();
             
             String importe = importeIng.getText();
 
@@ -417,8 +422,8 @@ String formattedString = String.format(formatString, numEntero);
 
             
             
-            String sql = "insert into remitos (fecha, cliente, telefono, celular, domicilio, localidad, aparato, marca, falla, importe)";
-            String sql2 = "VALUE ('"+formattedString+"','"+cliente+"',"+telefono+","+celular+",'"+domicilio+"','CABA','"+aparato+"','"+modelo+" "+serie+"','"+falla+"','"+importe+"')";
+            String sql = "insert into remitos (fecha, cliente, telefono, celular, domicilio, localidad, aparato, marca, falla, importe, observaciones)";
+            String sql2 = "VALUE ('"+formattedString+"','"+cliente+"',"+telefono+","+celular+",'"+domicilio+"','CABA','"+aparato+"','"+modelo+" "+serie+"','"+falla+"','"+importe+"','"+observaciones+"')";
             System.out.println(sql2);
             
             con.prepareStatement(sql+sql2).execute();
@@ -450,7 +455,8 @@ String formattedString = String.format(formatString, numEntero);
     }//GEN-LAST:event_telefonoIngActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-               try {
+               
+        try {
                    Class.forName("com.mysql.jdbc.Driver");
                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/remitos", "root", "");
                    InputStream in = new FileInputStream(new File("C:\\Reportes\\remitos.jrxml"));
@@ -478,6 +484,7 @@ String formattedString = String.format(formatString, numEntero);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
+       
         cte.setText("");
         domicilioIng.setText("");
         telefonoIng.setText("");
@@ -487,33 +494,29 @@ String formattedString = String.format(formatString, numEntero);
         serieIng.setText("");
         fallaIng.setText("");
         importeIng.setText("");
-        
         jButton2.setVisible(false);
         nuevo.setVisible(false);
+        
     }//GEN-LAST:event_nuevoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) throws ClassNotFoundException, SQLException {
+        
         loader Loader = new loader();
         Loader.setVisible(true);
                
-
         try {
                     for (int i = 0; i <= 100; i++) {
                     Thread.sleep(50);
                     if (i==100) {
                         Loader.setVisible(false);
                         new home().setVisible(true);
-                        
-                        
                     }}
                 } catch (Exception e) {
                 }
-        
-        
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -524,8 +527,6 @@ String formattedString = String.format(formatString, numEntero);
                 } catch (SQLException ex) {
                     Logger.getLogger(remitos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-
             }
         });
     }
@@ -545,6 +546,7 @@ String formattedString = String.format(formatString, numEntero);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -559,6 +561,7 @@ String formattedString = String.format(formatString, numEntero);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField modeloIng;
     private javax.swing.JButton nuevo;
+    private javax.swing.JTextField obs;
     private javax.swing.JTextField serieIng;
     private javax.swing.JTextField telefonoIng;
     // End of variables declaration//GEN-END:variables

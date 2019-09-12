@@ -79,6 +79,8 @@ public class modificarRemitos extends javax.swing.JFrame {
         falla = new javax.swing.JTextField();
         importe = new javax.swing.JTextField();
         genRem = new javax.swing.JButton();
+        obs = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Remitos");
@@ -131,6 +133,12 @@ public class modificarRemitos extends javax.swing.JFrame {
             }
         });
 
+        cel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                celActionPerformed(evt);
+            }
+        });
+
         genRem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/folder_new.gif"))); // NOI18N
         genRem.setText("Generar Remito modificado");
         genRem.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +146,8 @@ public class modificarRemitos extends javax.swing.JFrame {
                 genRemActionPerformed(evt);
             }
         });
+
+        jLabel12.setText("Observaciones:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,49 +157,44 @@ public class modificarRemitos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel10))
-                                            .addGap(10, 10, 10))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cel)
-                                        .addComponent(domicilio)
-                                        .addComponent(localidad)
-                                        .addComponent(aparato)
-                                        .addComponent(marca)
-                                        .addComponent(telefono)
-                                        .addComponent(falla)
-                                        .addComponent(importe, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(ordenBusc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(modificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ordenBusc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(obs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                    .addComponent(importe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                    .addComponent(falla, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(marca, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(aparato, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(localidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(domicilio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cel)
+                                    .addComponent(telefono)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
                         .addComponent(genRem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -236,16 +241,20 @@ public class modificarRemitos extends javax.swing.JFrame {
                     .addComponent(falla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(importe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(importe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(modificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(genRem)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -270,7 +279,8 @@ public class modificarRemitos extends javax.swing.JFrame {
             String aparato1 = rs.getString("aparato");
             String marca1 = rs.getString("marca");
             String falla1 = rs.getString("falla");
-            int importe1 = rs.getInt("importe");
+            String importe1 = rs.getString("importe");
+            String observacion = rs.getString("observaciones");
             
             cliente.setText(cliente1);
             telefono.setText(String.valueOf(telefono1));
@@ -281,6 +291,7 @@ public class modificarRemitos extends javax.swing.JFrame {
             marca.setText(marca1);
             falla.setText(falla1);
             importe.setText(String.valueOf(importe1));
+            obs.setText(observacion);
             }
             
             
@@ -300,10 +311,10 @@ this.dispose();        // TODO add your handling code here:
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/remitos", "root", "");
          System.out.println("Conectado");
 
-         String sql = "UPDATE remitos SET cliente =?, telefono =?,  celular = ?,domicilio =?, localidad =?, aparato=?, marca=?, falla=?, importe=? WHERE orden=?";
+         String sql = "UPDATE remitos SET cliente =?, telefono =?,  celular = ?,domicilio =?, localidad =?, aparato=?, marca=?, falla=?, importe=?, observaciones=? WHERE orden=?";
         int telefono1 = Integer.parseInt(telefono.getText());
         int celular1 = Integer.parseInt(cel.getText());
-        int importe1 = Integer.parseInt(importe.getText());
+        String importe1 = importe.getText();
         int orden1 = Integer.parseInt(ordenBusc.getText());
 PreparedStatement statement = con.prepareStatement(sql);
 statement.setString(1, cliente.getText());
@@ -314,8 +325,10 @@ statement.setString(5,localidad.getText());
 statement.setString(6,aparato.getText());
 statement.setString(7,marca.getText());
 statement.setString(8,falla.getText());
-statement.setInt(9, importe1);
-statement.setInt(10,orden1);
+statement.setString(9, importe1);
+statement.setString(10,obs.getText());
+statement.setInt(11,orden1);
+
 
 
 
@@ -326,9 +339,6 @@ if (rowsUpdated > 0) {
     System.out.println("An existing user was updated successfully!");
     genRem.setVisible(true);
 }
-         
-         
-         
                 } catch (SQLException e) {
             System.out.println("Error al conectar.");
         }
@@ -366,6 +376,10 @@ if (rowsUpdated > 0) {
         
     }//GEN-LAST:event_genRemActionPerformed
 
+    private void celActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_celActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -388,6 +402,7 @@ if (rowsUpdated > 0) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -399,6 +414,7 @@ if (rowsUpdated > 0) {
     private javax.swing.JTextField localidad;
     private javax.swing.JTextField marca;
     private javax.swing.JButton modificar;
+    private javax.swing.JTextField obs;
     private javax.swing.JTextField ordenBusc;
     private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
