@@ -139,9 +139,6 @@
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fechaTextActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -243,9 +240,6 @@
         <Component class="javax.swing.JTextField" name="domicilioIng">
         </Component>
         <Component class="javax.swing.JTextField" name="telefonoIng">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telefonoIngActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="celularIng">
         </Component>
