@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -24,10 +26,13 @@ import net.sf.jasperreports.view.JasperViewer;
 
 
 public class Cliente {
-        String cliente, domicilio, telefono, celular, aparato, modelo, serie,
+    String cliente, domicilio, telefono, celular, aparato, modelo, serie,
                 falla, observaciones, importe;
-          
-               
+        
+    String cliente1, domicilio1, localidad1, aparato1, marca1,falla1,importe1,observaciones1;
+    
+    int telefono1,cel1,ordenABuscar;
+       
     public void establecerCliente(String cliente){
         this.cliente = cliente;
     }
@@ -58,8 +63,6 @@ public class Cliente {
     public void establecerImporte(String importe){
         this.importe = importe;
     } 
-    
-     
     public String obtenerCliente(){
         return cliente;
     }
@@ -90,7 +93,6 @@ public class Cliente {
     public String obtenerImporte(){
         return importe;
     }
-
     public  void generarRemito(){
         try {
                    Class.forName("com.mysql.jdbc.Driver");
@@ -111,11 +113,7 @@ public class Cliente {
         } catch (Exception e) {
                 //JOptionPane.showMessageDialog(null, e);
         }
-    }    
-    
-    
-    
-    
+    }       
     public void baseDeDatos(){
         try {
             //System.out.println("Conectando a Base de datos");
@@ -127,7 +125,6 @@ public class Cliente {
             //System.out.println("Error al conectar.");
         }
     }
-    
     public void ejecutarQuery(String sql, String sql2){
           try {
             //System.out.println("Conectando a Base de datos");
@@ -140,7 +137,6 @@ public class Cliente {
             //System.out.println("Error al conectar.");
         }
     }
-    
     public void espera(){
         loader Loader = new loader();
         Loader.setVisible(true);
@@ -167,5 +163,87 @@ public class Cliente {
             }
         });
     }
+    public void establecerOrdenBuscar(int ordenABuscar){
+
+        this.ordenABuscar = ordenABuscar;
+                //System.out.println("Se graba la orden a buscar" + this.ordenABuscar+ ordenABuscar);
+    }
+    public void consultaBaseDeDatos(int ordenPorBuscar){
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/remitos", "root", "");
+            String sql = " select * from remitos where orden ="+ordenPorBuscar;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                this.cliente1 = rs.getString("cliente");
+                this.telefono1 = rs.getInt("telefono");
+                this.cel1 = rs.getInt("celular");
+                this.domicilio1 = rs.getString("domicilio");
+                this.localidad1 = rs.getString("localidad");
+                this.aparato1 = rs.getString("aparato");
+                this.marca1 = rs.getString("marca");
+                this.falla1 = rs.getString("falla");
+                this.importe1 = rs.getString("importe");
+                this.observaciones1 = rs.getString("observaciones");
+            }   
+        }   catch (Exception e) {
+            System.out.println("");
+        } 
+    }
+    public String obtenerCliente1(){
+        return cliente1;
+    }
+    public int obtenerTelefono1(){
+        return telefono1;
+    }
+    public int obtenerCelular1(){
+        return cel1;
+    }
+    public String obtenerDomicilio1(){
+        return domicilio1;
+    }
+    public String obtenerLocalidad1(){
+        return localidad1;
+    }
+    public String obtenerAparato1(){
+        return aparato1;
+    }
+    public String obtenerMarca1(){
+        return marca1;
+    }
+    public String obtenerFalla1(){
+        return falla1;
+    }
+    public String obtenerImporte1(){
+        return importe1;
+    }
+    public String obtenerObservaciones1(){
+        return observaciones1;
+    }
     
+    public void generarRemitoEnConsulta(int ordenPorBuscar){
+                        try {
+                   Class.forName("com.mysql.jdbc.Driver");
+                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/remitos", "root", "");
+                   InputStream in = new FileInputStream(new File("C:\\Reportes\\remitos.jrxml"));
+                   JasperDesign jd = JRXmlLoader.load(in);
+                   int orden1 = ordenPorBuscar;
+                   String sql = " select * from remitos where orden ="+orden1;
+                   JRDesignQuery newQuery = new JRDesignQuery();
+                   newQuery.setText(sql);
+                   jd.setQuery(newQuery);
+                   JasperReport jr = JasperCompileManager.compileReport(jd);
+                   HashMap para = new HashMap();
+                   JasperPrint j=JasperFillManager.fillReport(jr,para,con);
+                   JasperViewer.viewReport(j, false);
+                   OutputStream os = new FileOutputStream(new File("C:\\Reportes"));
+                   JasperExportManager.exportReportToPdfStream(j,os);
+       
+        } catch (Exception e) {
+                //JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }
