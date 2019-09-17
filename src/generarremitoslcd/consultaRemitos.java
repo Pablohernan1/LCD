@@ -238,6 +238,7 @@ public class consultaRemitos extends javax.swing.JFrame {
     Cliente clientes = new Cliente();
     int orden1 = Integer.parseInt(ordenBusc.getText());
     clientes.generarRemitoEnConsulta(orden1);
+    
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
