@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -59,7 +58,7 @@ public class Cliente {
     public void establecerFalla(String falla){
         this.falla = falla;
     } 
-        public void establecerMarca(String marca){
+    public void establecerMarca(String marca){
         this.marca = marca;
     } 
     public void establecerObservaciones(String observaciones){
@@ -68,7 +67,7 @@ public class Cliente {
     public void establecerImporte(String importe){
         this.importe = importe;
     } 
-        public void establecerLocalidad(String localidad){
+    public void establecerLocalidad(String localidad){
         this.localidad = localidad;
     } 
     public String obtenerCliente(){

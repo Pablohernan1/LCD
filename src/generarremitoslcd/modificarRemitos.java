@@ -114,12 +114,6 @@ public class modificarRemitos extends javax.swing.JFrame {
             }
         });
 
-        cel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                celActionPerformed(evt);
-            }
-        });
-
         genRem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/folder_new.gif"))); // NOI18N
         genRem.setText("Generar Remito modificado");
         genRem.addActionListener(new java.awt.event.ActionListener() {
@@ -314,10 +308,6 @@ this.dispose();        // TODO add your handling code here:
         this.dispose();
         
     }//GEN-LAST:event_genRemActionPerformed
-
-    private void celActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_celActionPerformed
 
     public static void main(String args[]) {
 
